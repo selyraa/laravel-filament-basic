@@ -12,8 +12,9 @@ class LandingPageController extends Controller
     {
         // get one hero that is active
         $hero = Hero::where('is_active', true)->first();
-        // dd($hero->image);
+        [$mainTitle, $animationTitle] = explode('#', $hero->title);
+        $animationTitle = explode('|', $animationTitle);
         // return view
-        return view('welcome', compact('hero'));
+        return view('welcome', compact('hero', 'mainTitle', 'animationTitle'));
     }
 }

@@ -9,9 +9,16 @@
         <div class="flex-shrink max-w-full px-4 w-full md:w-9/12 lg:w-1/2 self-center lg:pr-12">
             <div class="text-center lg:text-left mt-6 lg:mt-0">
                 <div class="mb-12">
-                    <h1 class="text-4xl leading-normal text-black font-bold mb-4"> {{ $hero->title }}
+                    <h1 class="text-4xl leading-normal text-black font-bold mb-4"> {{ $mainTitle }}
                         <span data-toggle="typed"
-                            data-options='{"strings": ["Online Marketing", "Web Design", "Mobile Apps", "Brand Identity", "Social Content"]}'></span>
+                            data-options='{"strings": [
+                            @foreach ($animationTitle as $title)
+                            "{{ $title }}"
+                            @if (!$loop->last),
+                            @endif
+                            @endforeach
+                            ]}'>
+                        </span>
                     </h1>
                     <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">{{ $hero->subtitle }}</p>
                 </div>
@@ -43,7 +50,7 @@
                         <polyline points="112 160 256 272 400 160"
                             style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" />
                     </svg>
-                    Download Now
+                    Lets Connect
                 </a>
             </div>
         </div>
