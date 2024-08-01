@@ -23,7 +23,7 @@ class HeroFactory extends Factory
             'subtitle' => $this->faker->sentence(),
             'link1' => $this->faker->url(),
             'link2' => $this->faker->url(),
-            'is_active' => $this->faker->boolean(),
+            'is_active' => false,
         ];
     }
 }

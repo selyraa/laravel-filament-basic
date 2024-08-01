@@ -7,9 +7,12 @@ use App\Filament\Resources\ServiceResource\RelationManagers;
 use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use BladeUI\Icons\BladeIcons;
+use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -20,19 +23,22 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ServiceResource extends Resource
 {
     protected static ?string $model = Service::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    // add blade icons from vendor blade-ui-kit/blade-heroicons
+    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                FileUpload::make('icon'),
+                FileUpload::make('icon')
+                    ->image()
+                    ->avatar(),
                 TextInput::make('title')
                     ->placeholder('Enter the title of the service')
                     ->required(),
-                textInput::make('description')
+                Textarea::make('description')
                     ->placeholder('Enter the description of the service')
+
                     ->required(),
             ]);
     }
