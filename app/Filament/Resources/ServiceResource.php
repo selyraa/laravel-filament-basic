@@ -30,15 +30,16 @@ class ServiceResource extends Resource
     {
         return $form
             ->schema([
+               // add svg icon
                 FileUpload::make('icon')
                     ->image()
-                    ->avatar(),
+                    ->avatar()
+                    ->required(),
                 TextInput::make('title')
                     ->placeholder('Enter the title of the service')
                     ->required(),
                 Textarea::make('description')
                     ->placeholder('Enter the description of the service')
-
                     ->required(),
             ]);
     }
@@ -47,7 +48,8 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('icon'),
+                ImageColumn::make('icon')
+                    ->visible(),
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable()

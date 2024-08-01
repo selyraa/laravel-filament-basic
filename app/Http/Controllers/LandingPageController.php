@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hero;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -14,7 +15,12 @@ class LandingPageController extends Controller
         $hero = Hero::where('is_active', true)->first();
         [$mainTitle, $animationTitle] = explode('#', $hero->title);
         $animationTitle = explode('|', $animationTitle);
+
+        // get all services
+        $services = Service::all();
+
+
         // return view
-        return view('welcome', compact('hero', 'mainTitle', 'animationTitle'));
+        return view('welcome', compact('hero', 'mainTitle', 'animationTitle', 'services'));
     }
 }
