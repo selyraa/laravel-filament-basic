@@ -60,9 +60,11 @@ class HeroResource extends Resource
         return $table
             ->columns([
                 // add field for heroes table
+                // ImageColumn::make('image')
+                //     ->sortable()
+                //     ->searchable(),
                 ImageColumn::make('image')
-                    ->sortable()
-                    ->searchable(),
+                    ->circular(),
                 TextColumn::make('title')
                     ->wrap()
                     ->sortable()

@@ -19,7 +19,6 @@ class LandingPageController extends Controller
         // get all services
         $services = Service::all();
 
-
         // return view
         return view('welcome', compact('hero', 'mainTitle', 'animationTitle', 'services'));
     }

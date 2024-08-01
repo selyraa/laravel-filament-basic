@@ -11,14 +11,14 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use BladeUI\Icons\BladeIcons;
-use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\Tables;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Validation\Rules\ImageFile;
 
 class ServiceResource extends Resource
 {
@@ -30,7 +30,7 @@ class ServiceResource extends Resource
     {
         return $form
             ->schema([
-               // add svg icon
+                // add svg icon
                 FileUpload::make('icon')
                     ->image()
                     ->avatar()
@@ -50,6 +50,7 @@ class ServiceResource extends Resource
             ->columns([
                 ImageColumn::make('icon')
                     ->visible(),
+                    // ->url(fn (Service $service) => filter_var($service->icon, FILTER_VALIDATE_URL) ? $service->icon : (asset($service->icon))),
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable()

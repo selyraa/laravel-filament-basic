@@ -27,9 +27,14 @@
                     <div class="inline-block text-gray-900 mb-4">
                         <!-- icon -->
                         @php
-                            $iconUrl = filter_var($service->icon, FILTER_VALIDATE_URL)
-                                ? $service->icon
-                                : Storage::url($service->icon);
+                            $iconUrl = $service->icon;
+                            if (filter_var($service->icon, FILTER_VALIDATE_URL)) {
+                                $iconUrl = $service->icon;
+                            } elseif (file_exists(public_path('storage/' . $service->icon))) {
+                                $iconUrl = Storage::url($service->icon);
+                            } else {
+                                $iconUrl = 'src/img/' . $service->icon;
+                            }
                         @endphp
                         <img src="{{ $iconUrl }}" alt="{{ $service->title }}" class="w-8 h-8">
                     </div>

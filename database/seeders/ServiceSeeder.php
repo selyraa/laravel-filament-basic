@@ -13,6 +13,6 @@ class ServiceSeeder extends Seeder
     public function run(): void
     {
         // add seeder for service
-        \App\Models\Service::factory(10)->create();
+        \App\Models\Service::factory(6)->create();
     }
 }
