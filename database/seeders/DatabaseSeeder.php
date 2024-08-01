@@ -26,6 +26,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
         ]);
 
+        User::factory()->create([
+            'name' => 'Sely',
+            'email' => 'sely@admin.com',
+            'password' => bcrypt('sely1234'),
+        ]);
+
         //call other seeders
         $this->call([
             GuestBookSeeder::class,

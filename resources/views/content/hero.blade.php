@@ -3,9 +3,14 @@
         <!-- content -->
         <div class="flex-shrink max-w-full px-4 sm:px-12 lg:px-18 w-full sm:w-9/12 lg:w-1/2 self-center">
             @php
-                $heroUrl = filter_var($hero->image, FILTER_VALIDATE_URL)
-                    ? $hero->image
-                    : Storage::url($hero->image);
+                $heroUrl = $hero->image;
+                if (filter_var($hero->image, FILTER_VALIDATE_URL)) {
+                    $heroUrl = $hero->image;
+                } elseif (file_exists(public_path('storage/' . $hero->image))) {
+                    $heroUrl = Storage::url($hero->image);
+                } else {
+                    $heroUrl = 'src/img/' . $hero->image;
+                }
             @endphp
             <img src="{{ $heroUrl }}" class="w-full max-w-full h-auto" alt="creative agency">
         </div><!-- end content -->
@@ -20,8 +25,7 @@
                             @foreach ($animationTitle as $title)
                             "{{ $title }}"
                             @if (!$loop->last),
-                            @endif
-                            @endforeach
+                            @endif @endforeach
                             ]}'>
                         </span>
                     </h1>
