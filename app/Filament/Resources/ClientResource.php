@@ -2,20 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PortfolioCategoryResource\Pages;
-use App\Filament\Resources\PortfolioCategoryResource\RelationManagers;
-use App\Models\PortfolioCategory;
+use App\Filament\Resources\ClientResource\Pages;
+use App\Filament\Resources\ClientResource\RelationManagers;
+use App\Models\Client;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PortfolioCategoryResource extends Resource
+class ClientResource extends Resource
 {
-    protected static ?string $model = PortfolioCategory::class;
+    protected static ?string $model = Client::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,7 +26,13 @@ class PortfolioCategoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                FileUpload::make('image')
+                    ->image()
+                    ->avatar()
+                    ->required(),
+                TextColumn::make('name')
+                    ->placeholder('Enter the name of the client')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +40,10 @@ class PortfolioCategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('image'),
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -58,9 +70,9 @@ class PortfolioCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPortfolioCategories::route('/'),
-            'create' => Pages\CreatePortfolioCategory::route('/create'),
-            'edit' => Pages\EditPortfolioCategory::route('/{record}/edit'),
+            'index' => Pages\ListClients::route('/'),
+            'create' => Pages\CreateClient::route('/create'),
+            'edit' => Pages\EditClient::route('/{record}/edit'),
         ];
     }
 }

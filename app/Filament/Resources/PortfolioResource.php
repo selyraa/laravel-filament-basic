@@ -44,6 +44,8 @@ class PortfolioResource extends Resource
                 Select::make('portfolio_category_id')
                     ->options(PortfolioCategory::pluck('name', 'id'))
                     ->placeholder('Select a category')
+                    ->native(false)
+                    ->label('Category ID')
                     ->required(),
             ]);
     }
@@ -57,12 +59,12 @@ class PortfolioResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->wrap(),
-                textColumn::make('description')
+                TextColumn::make('description')
                     ->searchable()
                     ->sortable()
                     ->wrap(),
-
-
+                TextColumn::make('portfolioCategory.name')
+                    ->label('Category'),
             ])
             ->filters([
                 //

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PortfolioCategory;
-use App\Http\Requests\StorePortfolioCategoryRequest;
-use App\Http\Requests\UpdatePortfolioCategoryRequest;
+use App\Models\Client;
+use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 
-class PortfolioCategoryController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class PortfolioCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePortfolioCategoryRequest $request)
+    public function store(StoreClientRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class PortfolioCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PortfolioCategory $portfolioCategory)
+    public function show(Client $client)
     {
         //
     }
@@ -43,7 +43,7 @@ class PortfolioCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PortfolioCategory $portfolioCategory)
+    public function edit(Client $client)
     {
         //
     }
@@ -51,7 +51,7 @@ class PortfolioCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePortfolioCategoryRequest $request, PortfolioCategory $portfolioCategory)
+    public function update(UpdateClientRequest $request, Client $client)
     {
         //
     }
@@ -59,7 +59,7 @@ class PortfolioCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PortfolioCategory $portfolioCategory)
+    public function destroy(Client $client)
     {
         //
     }

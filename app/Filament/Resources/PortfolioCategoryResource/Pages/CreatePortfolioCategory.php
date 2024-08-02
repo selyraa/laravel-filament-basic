@@ -9,10 +9,4 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePortfolioCategory extends CreateRecord
 {
     protected static string $resource = PortfolioCategoryResource::class;
-
-    //customize redirect after create
-    public function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
 }

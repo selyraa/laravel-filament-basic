@@ -26,6 +26,10 @@ class PortfolioFactory extends Factory
                 'dummy/img4.jpg',
                 'dummy/img5.jpg',
                 'dummy/img6.jpg',
+                'dummy/img7.jpg',
+                'dummy/img8.jpg',
+                'dummy/img9.jpg',
+                'dummy/img10.jpg',
             ];
         return [
             // create unique random element image from $images
