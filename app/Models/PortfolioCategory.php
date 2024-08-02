@@ -14,4 +14,10 @@ class PortfolioCategory extends Model
     protected $table = 'portfolio_categories';
     protected $fillable = ['name', 'slug'];
     protected $dates = ['deleted_at'];
+
+    // create a one to many relationship with the portfolio
+    public function portfolios()
+    {
+        return $this->hasMany(Portfolio::class);
+    }
 }
