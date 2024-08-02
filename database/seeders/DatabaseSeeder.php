@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             GuestBookSeeder::class,
             HeroSeeder::class,
             ServiceSeeder::class,
+            PortfolioCategorySeeder::class,
         ]);
     }
 }
