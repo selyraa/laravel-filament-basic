@@ -50,7 +50,6 @@ class ServiceResource extends Resource
             ->columns([
                 ImageColumn::make('icon')
                     ->visible(),
-                    // ->url(fn (Service $service) => filter_var($service->icon, FILTER_VALIDATE_URL) ? $service->icon : (asset($service->icon))),
                 TextColumn::make('title')
                     ->searchable()
                     ->sortable()
@@ -60,6 +59,7 @@ class ServiceResource extends Resource
                     ->sortable()
                     ->wrap(),
             ])
+            ->reorderable('sort')
             ->filters([
                 //
             ])

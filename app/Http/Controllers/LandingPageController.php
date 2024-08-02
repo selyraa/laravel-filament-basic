@@ -16,9 +16,8 @@ class LandingPageController extends Controller
         [$mainTitle, $animationTitle] = explode('#', $hero->title);
         $animationTitle = explode('|', $animationTitle);
 
-        // get all services
-        $services = Service::all();
-
+        // get all services record order by sort column
+        $services = Service::orderBy('sort')->get();
         // return view
         return view('welcome', compact('hero', 'mainTitle', 'animationTitle', 'services'));
     }
